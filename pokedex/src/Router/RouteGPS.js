@@ -12,3 +12,7 @@ export const IrParaDetalhes = (history) => {
 export const IrParaPokedex = (history) => {
     history.push("/pokedex")
 }
+
+export const ApenasVoltar = (history) => {
+    history.back()
+}
