@@ -1,10 +1,10 @@
-import "./style"
+import { StyledHeader } from "./style"
 
 
 export default function CompHeader() {
     return(
-        <div>
-            Oi sou o Header.
-        </div>
+        <StyledHeader>
+            <h1>LABEPOKE</h1>
+        </StyledHeader>
     )
 }
