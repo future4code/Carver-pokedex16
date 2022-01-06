@@ -44,7 +44,7 @@ export default function PaginaErro() {
                 <p clasName="james">"...Aperte este botão agora ou se preparar para travar... travar... travar..."</p>
             </div>
 
-            <button onClick={() => {IrParaInicio(history)}}> MIAW, corre clica aqui!! 😼 </button>
+            <button onClick={() => {IrParaInicio(history)}}> MIAW, corre clica aqui!!  😼 </button>
         </StyledContainer>
     )
 }
