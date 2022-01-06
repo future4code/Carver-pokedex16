@@ -13,6 +13,7 @@ export const CardTelaInicial = styled.div `
        
         width: 100%;
         height: auto;
+        
     }
 
     .CardButton{
