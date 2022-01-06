@@ -6,6 +6,7 @@ export const StyledContainer = styled.div`
     justify-content: center;
 
     .area-card{
+
         display: flex;
         flex-direction: column;
         place-items: center;
