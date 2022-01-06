@@ -41,9 +41,9 @@ export const StyledDetalhes = styled.div`
             border: 2px solid var(--detalhes);
             background-image: url("https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png");
             background-size: cover;
-            img{
-                height: 125px;
-            }
+                img{
+                    height: 125px;
+                }
         }
 
         .PokeImage_back{
@@ -52,6 +52,7 @@ export const StyledDetalhes = styled.div`
             border: 2px solid var(--detalhes);
             background-image: url("https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png");
             background-size: cover;
+            /* background: pink; */
         }
 
         .ButtonToBack{

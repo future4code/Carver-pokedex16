@@ -9,7 +9,7 @@ export default function PaginaDetalhes() {
         <StyledDetalhes>
             <div className="PokeType">
                 {/* tipo🐞🌑🐉🌩️✨✊🏼 🔥 */}
-                 Eletric 🌩️
+                 Plant 🌿
             </div>
             <div className="PokeDates">
                 <div className="PokeImage">
