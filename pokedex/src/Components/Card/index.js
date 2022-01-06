@@ -20,6 +20,7 @@ export default function CompCard(props) {
     return(
         <div>
             <img src={pokemon !== "" ? pokemon.sprites.front_default : ''} />
+
         </div>
     )
 }
