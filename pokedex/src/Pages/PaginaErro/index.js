@@ -10,9 +10,9 @@ export default function PaginaErro() {
     const [url, set_url] = useState(BASE_URL)
 
 
-useEffect(() => {
-    get_PokemonGeral(url, set_pokemonGeral)
-}, [url])
+    useEffect(() => {
+        get_PokemonGeral(url, set_pokemonGeral)
+    }, [url])
 
 
     const cardReturn = () => {
