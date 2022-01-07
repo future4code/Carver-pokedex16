@@ -22,21 +22,16 @@ useEffect(() => {
 }, [url])
 
 const tryToset_urlID = (history, id) => {
-    
     setters.set_urlPokeID(id)
-
-    // history.push(`/poke_detalhes/${states.urlPokeID}`)
     IrParaDetalhes(history, id)
-
-    
 }
 
     const cardReturn = () => {
-        console.log("array", pokemonGeral)
+        // console.log("array", pokemonGeral)
             if(pokemonGeral.results){
                 return pokemonGeral.results.map((poke) => {
                     return(
-                        <div key={poke} className="area-card">
+                        <div key={poke.name} className="area-card">
                             <CompCard poke={poke}/>
 
                             
