@@ -5,9 +5,6 @@ import { IrParaInicio } from "../../Router/RouteGPS"
 
 
 export default function PaginaErro() {
-
-    const history = useHistory()
-
     return(
         <StyledContainer>
             <div className="centro">
@@ -22,10 +19,11 @@ export default function PaginaErro() {
                     </div>
                 </div>
 
-<div>               <h2 className="img-text"> ERROR 404 </h2>
+                <div>               
+                    <h2 className="img-text"> ERROR 404 </h2>
                     <p className="img-text"> Page NOT Found </p>
-                <img src="https://c.tenor.com/P--0tEUy1SwAAAAC/team-rocket-meowth.gif" alt="Erro"/>
-</div>
+                    <img src="https://c.tenor.com/P--0tEUy1SwAAAAC/team-rocket-meowth.gif" alt="Erro"/>
+                </div>
 
                 <div className="falas-direita">
                     <div className="fala2">
