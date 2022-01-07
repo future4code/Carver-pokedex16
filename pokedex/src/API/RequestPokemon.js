@@ -1,7 +1,7 @@
 import axios from "axios"
 import { BASE_URL } from "../constants/url_base"
 
-// ?limit=20
+// 
 export const get_PokemonGeral = (url, set_data) => {
     // console.log("url:", url)
     axios.get(url)
