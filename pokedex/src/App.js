@@ -1,18 +1,14 @@
 import {BrowserRouter} from "react-router-dom"
 import Router from "./Router/Router";
 import CompHeader from "./Components/Header";
-
-import { AndandoPorAi } from "./Components/AndandoPorAI"
+import GlobalState from "./global/GlobalState";
 
 
 function App() {
   return(
-
-    <BrowserRouter>
-      {/* <AndandoPorAi /> */}
-      <CompHeader />
-      <Router />
-    </BrowserRouter>
+    <GlobalState>
+        <Router />
+    </GlobalState>
   );
 }
 

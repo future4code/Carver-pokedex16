@@ -19,6 +19,7 @@ export default function CompCard(props) {
 
     return(
         <div>
+            <p>{pokemon !== "" ? pokemon.name : ''}</p>
             <img src={pokemon !== "" ? pokemon.sprites.front_default : ''} />
 
         </div>

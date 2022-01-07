@@ -11,7 +11,7 @@ export const StyledDetalhes = styled.div`
     padding: 10px;
 
 
-    .PokeType{
+    .PokeName{
         display: flex;
         background-color: var(--primaria);
         width: 200px;

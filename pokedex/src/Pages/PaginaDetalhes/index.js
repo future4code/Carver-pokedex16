@@ -1,15 +1,52 @@
 import { StyledDetalhes } from "./style"
 import { IrParaInicio } from "../../Router/RouteGPS"
 import { useHistory } from "react-router-dom"
+import GlobalStateContext from "../../global/GlobalStateContext"
+import { useContext, useState, useEffect } from "react"
+import { get_PokemonGeral } from "../../API/RequestPokemon"
+import axios from "axios"
+
 
 export default function PaginaDetalhes() {
+    const {states, setters} = useContext(GlobalStateContext)
     const history = useHistory()
+
+    const [detalhes, set_detalhes] = useState()
+
+
+    const pokeAtual = states.urlPokeID
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokeAtual}`
+
+    useEffect(() => {
+        // get_PokemonGeral(url, set_detalhes)
+
+        const get_PokemonDetails = () => {
+            axios.get(url)
+                .then((resp) => {
+                    console.log("detalhes resp", resp.data)
+                    set_detalhes(resp.data)
+
+                })
+                .catch((error) => {
+
+                })
+        }
+
+        get_PokemonDetails()
+    }, [])
+
+    const info = () => {
+        console.log(pokeAtual)
+    }
+
 
     return(
         <StyledDetalhes>
-            <div className="PokeType">
-                {/* tipo🐞🌑🐉🌩️✨✊🏼 🔥 */}
-                 Plant 🌿
+            <button onClick={info}>INFO.log</button>
+
+            <div className="PokeName">
+                {/* VENOSSAUR_Mock */}
+                {pokeAtual}
             </div>
             <div className="PokeDates">
                 <div className="PokeImage">
@@ -28,7 +65,7 @@ export default function PaginaDetalhes() {
 
                 </div>
                 <div className="PokeStats">
-                    <h3> VENOSSAUR </h3>
+                    <h3> Plant 🌿 </h3>
                     <p><strong>HP:</strong> tal</p>
                     <p><strong>ATTACK:</strong> tal</p>
                     <p><strong>DEFENSE:</strong> tal</p>
@@ -45,3 +82,8 @@ export default function PaginaDetalhes() {
         </StyledDetalhes>
     )
 }
+
+{/* tipo🐞🌑🐉🌩️✨✊🏼 🔥 */}
+// set_urlID(`https://pokeapi.co/api/v2/pokemon/${pokemonGeral.results.name}`)
+
+// {pokemonGeral.results ? set_urlID(`https://pokeapi.co/api/v2/pokemon/${pokemonGeral.results.name}`) : set_urlID("")}
