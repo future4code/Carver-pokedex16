@@ -5,23 +5,39 @@ export const StyledContainer = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    .area-card{
+    p{
+            text-align: center;
+            font-weight: bold;
+            color: var(--detalhes);
+            transition: 0.9s;
 
+            :hover{
+                color: var(--segundaria);
+            }
+        }
+        
+    .area-card{
         display: flex;
         flex-direction: column;
         place-items: center;
         justify-content: center;
         background: var(--branco);
         margin: 5px;
-        width: 150px;
-        height: 150px;
+        margin-top: 10px;
+        width: 170px;
+        height: 170px;
         border-radius: 5px;
+        border: 1px solid var(--primaria);
+
+
 
         .area-card-button{
+            display: flex;
             button{ 
-                    width: 100px;
+                    margin: 2px;
+                    width: 75px;
                     height: 30px;
-                    border-radius: 5px 5px 5px 12px;
+                    border-radius: 5px 5px 5px 5px;
                     color: var(--branco);
                     font-weight: bold;
                     background-color: var(--primaria);
