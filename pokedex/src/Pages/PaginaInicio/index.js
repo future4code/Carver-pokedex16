@@ -21,6 +21,7 @@ export default function PaginaInicial() {
         get_PokemonGeral(url, set_pokemonGeral)
     }, [url])
 
+
     const tryToset_urlID = (history, id) => {
 
         setters.set_urlPokeID(id)
@@ -48,6 +49,7 @@ export default function PaginaInicial() {
                         <div className="area-card-button">
                             <button onClick={() => adicionarAPokedex(poke)} >Adicionar</button>
                             <button onClick={() => tryToset_urlID(history, poke.name)}>Detalhes</button>
+
                         </div>
                     </div>
                 )

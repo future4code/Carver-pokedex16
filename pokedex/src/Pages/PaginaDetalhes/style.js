@@ -10,6 +10,11 @@ export const StyledDetalhes = styled.div`
     height: 350px;
     padding: 10px;
 
+    h5{
+        margin: 0;
+        margin-top: 7px;
+    }
+
 
     .PokeName{
         display: flex;
@@ -24,6 +29,7 @@ export const StyledDetalhes = styled.div`
         border: 2px solid var(--detalhes);
         color: var(--branco);
         font-weight: bolder;
+        text-transform: uppercase;
     }
 
     .PokeDates{
