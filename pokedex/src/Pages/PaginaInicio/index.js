@@ -10,41 +10,53 @@ import GlobalStateContext from "../../global/GlobalStateContext"
 
 export default function PaginaInicial() {
     const [pokemonGeral, set_pokemonGeral] = useState([])
-    const {states, setters} = useContext(GlobalStateContext)
+    const { states, setters } = useContext(GlobalStateContext)
 
     const [url, set_url] = useState(BASE_URL)
     const [urlID, set_urlID] = useState("")
 
     const history = useHistory()
 
-useEffect(() => {
-    get_PokemonGeral(url, set_pokemonGeral)
-}, [url])
+    useEffect(() => {
+        get_PokemonGeral(url, set_pokemonGeral)
+    }, [url])
 
-const tryToset_urlID = (history, id) => {
-    setters.set_urlPokeID(id)
-    IrParaDetalhes(history, id)
-}
+
+    const tryToset_urlID = (history, id) => {
+
+        setters.set_urlPokeID(id)
+
+        // history.push(`/poke_detalhes/${states.urlPokeID}`)
+        IrParaDetalhes(history, id)
+
+
+    }
+
+    const adicionarAPokedex = (poke) => {
+        setters.setPokedex([...states.pokedex, poke])
+        console.log(states.pokedex)
+    }
 
     const cardReturn = () => {
-        // console.log("array", pokemonGeral)
-            if(pokemonGeral.results){
-                return pokemonGeral.results.map((poke) => {
-                    return(
-                        <div key={poke.name} className="area-card">
-                            <CompCard poke={poke}/>
+        console.log("array", pokemonGeral)
+        if (pokemonGeral.results) {
+            return pokemonGeral.results.map((poke) => {
+                return (
+                    <div key={poke} className="area-card">
+                        <CompCard poke={poke} />
 
-                            
-                            <div className="area-card-button">
-                                <button>Adicionar</button>
-                                <button onClick={()=> tryToset_urlID(history, poke.name)}>Detalhes</button>
-                            </div>
+
+                        <div className="area-card-button">
+                            <button onClick={() => adicionarAPokedex(poke)} >Adicionar</button>
+                            <button onClick={() => tryToset_urlID(history, poke.name)}>Detalhes</button>
+
                         </div>
+                    </div>
                 )
             })
         }
     }
-    
+
     const proxima = () => {
         pokemonGeral !== 0 ? console.log("proxima", pokemonGeral.next) : console.log("DEU RUIM")
         set_url(pokemonGeral.next)
@@ -55,8 +67,8 @@ const tryToset_urlID = (history, id) => {
         set_url(pokemonGeral.previous)
     }
 
-    
-    return(
+
+    return (
         <StyledContainer>
 
             <div className="area-pokes">
@@ -72,7 +84,7 @@ const tryToset_urlID = (history, id) => {
     )
 }
 
-        {/* <CardTelaInicial>
+{/* <CardTelaInicial>
             <img src="https://assets.pokemon.com/assets/cms2/img/misc/countries/pt/country_detail_pokemon.png"/>
 
             <div className="CardButton">
