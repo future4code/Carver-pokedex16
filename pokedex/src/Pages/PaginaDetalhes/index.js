@@ -4,23 +4,43 @@ import { useHistory } from "react-router-dom"
 import GlobalStateContext from "../../global/GlobalStateContext"
 import { useContext, useState, useEffect } from "react"
 import { get_PokemonGeral } from "../../API/RequestPokemon"
+import { useParams } from "react-router-dom"
 
 
 export default function PaginaDetalhes() {
     const {states, setters} = useContext(GlobalStateContext)
-    const history = useHistory()
-
     const [detalhes, set_detalhes] = useState()
 
-    const get_url = `https://pokeapi.co/api/v2/pokemon/${states.urlPokeID}`
+    const history = useHistory()
+    const params = useParams()
+
     
 
     useEffect(() => {
-        get_PokemonGeral(get_url, set_detalhes)
+        setters.set_urlPokeID(params.id)
+        setters.set_detalhesUrl(`https://pokeapi.co/api/v2/pokemon/${states.urlPokeID}`)
+
+        get_PokemonGeral(states.detalhesUrl, set_detalhes)
     }, [])
+
+
+    // O useEffect abaixo atualiza os detalhes do pokemon da Pokedex porém causa Looping, para usar ele comentar o de cima.
+    
+    // useEffect(() => {
+    //     setters.set_urlPokeID(params.id)
+    //     setters.set_detalhesUrl(`https://pokeapi.co/api/v2/pokemon/${states.urlPokeID}`)
+
+    //     get_PokemonGeral(states.detalhesUrl, set_detalhes)
+    // }, [detalhes])
+
+
+
+    
 
     return(
         <StyledDetalhes>
+            {/* <button onClick={() => console.log(states.detalhesUrl)}>INFO</button>
+            <button onClick={() => console.log(states.urlPokeID)}>INFO2</button> */}
             <div className="PokeName">
                 {detalhes && detalhes.name}
             </div>
@@ -28,11 +48,11 @@ export default function PaginaDetalhes() {
                 <div className="PokeImage">
 
                     <div className="PokeImage_front"> 
-                        <img alt="nomeFront" src={detalhes && detalhes.sprites.front_default} />
+                        <img alt={detalhes && detalhes.name} src={detalhes && detalhes.sprites.front_default} />
                     </div>
 
                     <div className="PokeImage_back">
-                        <img alt="nomeFront" src={detalhes && detalhes.sprites.back_default} />  
+                        <img alt={detalhes && detalhes.name} src={detalhes && detalhes.sprites.back_default} />  
                     </div>
 
                     <div className="ButtonToBack">

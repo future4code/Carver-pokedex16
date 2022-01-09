@@ -13,7 +13,6 @@ export default function PaginaInicial() {
     const { states, setters } = useContext(GlobalStateContext)
 
     const [url, set_url] = useState(BASE_URL)
-    const [urlID, set_urlID] = useState("")
 
     const history = useHistory()
 
@@ -23,26 +22,22 @@ export default function PaginaInicial() {
 
 
     const tryToset_urlID = (history, id) => {
-
         setters.set_urlPokeID(id)
-
-        // history.push(`/poke_detalhes/${states.urlPokeID}`)
+        setters.set_detalhesUrl(`https://pokeapi.co/api/v2/pokemon/${id}`)
         IrParaDetalhes(history, id)
-
-
     }
 
     const adicionarAPokedex = (poke) => {
         setters.setPokedex([...states.pokedex, poke])
-        console.log(states.pokedex)
+        console.log("addPokedex", states.pokedex)
     }
 
     const cardReturn = () => {
-        console.log("array", pokemonGeral)
+        console.log("array PageInicio antes do .map", pokemonGeral)
         if (pokemonGeral.results) {
             return pokemonGeral.results.map((poke) => {
                 return (
-                    <div key={poke} className="area-card">
+                    <div key={poke.name} className="area-card">
                         <CompCard poke={poke} />
 
 
@@ -70,25 +65,20 @@ export default function PaginaInicial() {
 
     return (
         <StyledContainer>
+            <div className="area-button">
+                <button className="button-previous" onClick={voltar}>Voltar Página</button>
+                <button className="button-next" onClick={proxima}>Proxima Página</button>
+            </div>
 
             <div className="area-pokes">
                 {pokemonGeral !== 0 ? cardReturn() : "DEU RUIM"}
             </div>
 
             <div className="area-button">
-                <button onClick={voltar}>Voltar</button>
-                <button onClick={proxima}>Proximo</button>
+                <button className="button-previous" onClick={voltar}>Voltar Página</button>
+                <button className="button-next" onClick={proxima}>Proxima Página</button>
             </div>
 
         </StyledContainer>
     )
 }
-
-{/* <CardTelaInicial>
-            <img src="https://assets.pokemon.com/assets/cms2/img/misc/countries/pt/country_detail_pokemon.png"/>
-
-            <div className="CardButton">
-                <button>Adicionar a Pokedex</button>
-                <button> Detalhes </button>
-            </div>
-        </CardTelaInicial> */}

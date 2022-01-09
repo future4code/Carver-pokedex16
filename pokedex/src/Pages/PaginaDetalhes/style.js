@@ -20,7 +20,7 @@ export const StyledDetalhes = styled.div`
         display: flex;
         background-color: var(--primaria);
         width: 200px;
-        height: 50px;
+        min-height: 20px;
         margin-left: 175px;
         place-items: center;
         padding: 5px;
@@ -42,6 +42,8 @@ export const StyledDetalhes = styled.div`
         margin-right: 5px;
 
         .PokeImage_front{
+            min-width: 125px;
+            height: 115px;
             margin-top: 5px;
             border-radius: 12px 0 0 0;
             border: 2px solid var(--detalhes);
@@ -49,17 +51,29 @@ export const StyledDetalhes = styled.div`
             background-size: cover;
                 img{
                     height: 125px;
+                    overflow: hidden;
+                    transition: 0.8s;
+                    animation: pokeEffect 5s linear infinite;
+                    }
+                @keyframes pokeEffect {
+                    from{ transform: translateY(1px)}
+                    to{transform: translateY(-1px), transform: translateY(-0.25px)}
                 }
+            }
         }
 
         .PokeImage_back{
+            min-width: 125px;
+            min-height: 100px;
             margin-top: 5px;
             border-radius: 0 0 0 12px;
             border: 2px solid var(--detalhes);
             background-image: url("https://i.pinimg.com/originals/7c/67/8b/7c678bffd31dc92dc80d95d471b0e83d.png");
             background-size: cover;
-            /* background: pink; */
-        }
+                img{
+                    transform: translateX(10px);
+                }
+            }
 
         .ButtonToBack{
             margin-top: 5px;

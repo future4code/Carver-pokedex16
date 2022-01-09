@@ -13,11 +13,10 @@ import GlobalStateContext from "../../global/GlobalStateContext"
 export default function PaginaPokedex() {
     const { states, setters } = useContext(GlobalStateContext)
     const history = useHistory()
+
+
     const tryToset_urlID = (history, id) => {
-
         setters.set_urlPokeID(id)
-
-        // history.push(`/poke_detalhes/${states.urlPokeID}`)
         IrParaDetalhes(history, id)
     }
 
@@ -36,7 +35,7 @@ export default function PaginaPokedex() {
         if (states.pokedex !== []) {
             return states.pokedex.map((poke) => {
                 return (
-                    <div key={poke} className="area-card">
+                    <div key={poke.name} className="area-card">
                         <CompCard poke={poke} />
 
                         <div className="area-card-button">
@@ -55,11 +54,6 @@ export default function PaginaPokedex() {
             <div className="area-pokes">
                 {states.pokedex !== [] ? cardPokedex() : "DEU RUIM"}
             </div>
-
-            {/* <div className="area-button">
-                <button onClick={voltar}>Voltar</button>
-                <button onClick={proxima}>Proximo</button>
-            </div> */}
 
         </StyledContainer>
     )
