@@ -23,8 +23,8 @@ const GlobalState = (props) => {
     }, [url])
     
     
-    const states = {pokemonGeral, pokedex, urlPokeID}
-    const setters = {set_pokemonGeral,setPokedex, set_urlPokeID}
+    const states = {pokemonGeral, pokedex, urlPokeID, estaNaPokedex}
+    const setters = {set_pokemonGeral,setPokedex, set_urlPokeID, setEstaNaPokedex}
     
     return(
         <GlobalStateContext.Provider value={{states, setters}}>

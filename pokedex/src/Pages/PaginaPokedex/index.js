@@ -21,26 +21,26 @@ export default function PaginaPokedex() {
         IrParaDetalhes(history, id)
     }
 
-// const removerDaPokedex = (poke) => {
-    
-//     const pokeIndex = states.pokedex.findIndex(
-//         (poke) => poke.name === poke.name
-//       )
-//       setters.setPokedex([...states.pokedex.splice(pokeIndex, 1)])
-//     console.log(states.pokedex)
-// }
+    const removerDaPokedex = (poke) => {
+        const pokeIndex = states.pokedex.findIndex(
+            (item) => item.name === poke.name
+        )
+
+        let novaPokedex = [...states.pokedex.splice(pokeIndex, 1)]
+        setters.setPokedex(novaPokedex)
+        console.log(states.pokedex)
+    }
 
     const cardPokedex = () => {
-        
-        if (states.pokedex!==[]) {
+
+        if (states.pokedex !== []) {
             return states.pokedex.map((poke) => {
                 return (
                     <div key={poke} className="area-card">
                         <CompCard poke={poke} />
 
-
                         <div className="area-card-button">
-                            <button  >Remover</button>
+                            <button onClick={() => removerDaPokedex(poke)} >Remover</button>
                             <button onClick={() => tryToset_urlID(history, poke.name)}>Detalhes</button>
                         </div>
                     </div>
@@ -49,11 +49,11 @@ export default function PaginaPokedex() {
         }
     }
 
-    return(
+    return (
         <StyledContainer>
 
             <div className="area-pokes">
-                {states.pokedex!==[] ? cardPokedex() : "DEU RUIM"}
+                {states.pokedex !== [] ? cardPokedex() : "DEU RUIM"}
             </div>
 
             {/* <div className="area-button">
