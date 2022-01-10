@@ -39,8 +39,6 @@ export default function PaginaDetalhes() {
 
     return(
         <StyledDetalhes>
-            {/* <button onClick={() => console.log(states.detalhesUrl)}>INFO</button>
-            <button onClick={() => console.log(states.urlPokeID)}>INFO2</button> */}
             <div className="PokeName">
                 {detalhes && detalhes.name}
             </div>

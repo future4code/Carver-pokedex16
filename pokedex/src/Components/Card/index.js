@@ -7,12 +7,7 @@ export default function CompCard(props) {
     const [pokemon, set_pokemon] = useState("")
 
     useEffect(() => {
-        // console.log("props card:", props.poke.url)
-
-
         get_PokemonGeral(props.poke.url, set_pokemon)
-        // console.log("effectCard:", pokemon)
-
     }, [props.poke])
 
 
