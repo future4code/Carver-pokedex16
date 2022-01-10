@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Ruana Piber da Rosa 
 - Thiago Daurizio Feitoza Pereira
 
-Link do Surge: labepoke-carverTRT.surge.sh
+Link do Surge: https://labepoke-carverTRT.surge.sh
 
 O que funciona:
 - Ver Detalhes
