@@ -7,10 +7,11 @@ import { StyledContainer } from "./style"
 import { IrParaDetalhes } from "../../Router/RouteGPS"
 import { useHistory } from "react-router-dom"
 import GlobalStateContext from "../../global/GlobalStateContext"
+import pokedexVazia from "../../Components/PokedexVazia"
 
 
 
-export default function PaginaPokedex() {
+export default function PaginaPokedex(props) {
     const { states, setters } = useContext(GlobalStateContext)
     const history = useHistory()
 
@@ -20,12 +21,13 @@ export default function PaginaPokedex() {
         IrParaDetalhes(history, id)
     }
 
-    const removerDaPokedex = (poke) => {
+    const removerDaPokedex = (pokeRemover) => {
         const pokeIndex = states.pokedex.findIndex(
-            (item) => item.name === poke.name
+            (item) => item.name === pokeRemover.name
         )
 
-        let novaPokedex = [...states.pokedex.splice(pokeIndex, 1)]
+        let novaPokedex = [...states.pokedex]
+        novaPokedex.splice(pokeIndex, 1)
         setters.setPokedex(novaPokedex)
         console.log(states.pokedex)
     }
@@ -39,7 +41,7 @@ export default function PaginaPokedex() {
                         <CompCard poke={poke} />
 
                         <div className="area-card-button">
-                            <button onClick={() => removerDaPokedex(poke)} >Remover</button>
+                            <button key={poke.name} onClick={()=> removerDaPokedex(poke)} >Remover</button>
                             <button onClick={() => tryToset_urlID(history, poke.name)}>Detalhes</button>
                         </div>
                     </div>
@@ -52,7 +54,7 @@ export default function PaginaPokedex() {
         <StyledContainer>
 
             <div className="area-pokes">
-                {states.pokedex !== [] ? cardPokedex() : "DEU RUIM"}
+                {states.pokedex !== [] ? cardPokedex() : pokedexVazia() }
             </div>
 
         </StyledContainer>
