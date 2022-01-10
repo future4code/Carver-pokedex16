@@ -6,10 +6,6 @@ import { useEffect } from "react"
 export default function CompHeader() {
     const history = useHistory()
 
-    // useEffect(()=> {
-    //     console.log("history", history)
-
-    // }, [history])
 
     return(
         <StyledHeader>

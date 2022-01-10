@@ -29,7 +29,6 @@ export default function PaginaPokedex(props) {
         let novaPokedex = [...states.pokedex]
         novaPokedex.splice(pokeIndex, 1)
         setters.setPokedex(novaPokedex)
-        console.log(states.pokedex)
     }
 
     const cardPokedex = () => {

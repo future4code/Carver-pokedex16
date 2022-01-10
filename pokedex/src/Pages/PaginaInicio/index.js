@@ -40,7 +40,7 @@ export default function PaginaInicial() {
     }
 
     const cardReturn = () => {
-        console.log("array PageInicio antes do .map", pokemonGeral)
+
         if (pokemonGeral.results) {
             return pokemonGeral.results.map((poke) => {
                 return (
@@ -62,12 +62,10 @@ export default function PaginaInicial() {
     }
 
     const proxima = () => {
-        pokemonGeral !== 0 ? console.log("proxima", pokemonGeral.next) : console.log("DEU RUIM")
         set_url(pokemonGeral.next)
     }
 
     const voltar = () => {
-        pokemonGeral !== 0 ? console.log("proxima", pokemonGeral.previous) : console.log("DEU RUIM")
         set_url(pokemonGeral.previous)
     }
 
