@@ -27,9 +27,16 @@ export default function PaginaInicial() {
         IrParaDetalhes(history, id)
     }
 
-    const adicionarAPokedex = (poke) => {
-        setters.setPokedex([...states.pokedex, poke])
-        console.log("addPokedex", states.pokedex)
+    const adicionarAPokedex = (pokeAdicionar) => {
+        const pokeIndex = states.pokedex.findIndex((item)=> item.name === pokeAdicionar.name)
+        const novaPokedex = [...states.pokedex]
+        if(pokeIndex===-1) {
+            const naPokedex = {...pokeAdicionar, amount: 1}
+            novaPokedex.push(naPokedex)
+        }else{
+            alert(`${pokeAdicionar.name} já está na sua Pokedex!`)
+        }
+        setters.setPokedex(novaPokedex)
     }
 
     const cardReturn = () => {
@@ -37,12 +44,14 @@ export default function PaginaInicial() {
         if (pokemonGeral.results) {
             return pokemonGeral.results.map((poke) => {
                 return (
-                    <div key={poke.name} className="area-card">
+                    <div key={poke.name} className="area-card"
+                    estaNaPokedex={false}
+                    >
                         <CompCard poke={poke} />
 
 
                         <div className="area-card-button">
-                            <button onClick={() => adicionarAPokedex(poke)} >Adicionar</button>
+                            <button key={poke.name} onClick={() => adicionarAPokedex(poke)} >Adicionar</button>
                             <button onClick={() => tryToset_urlID(history, poke.name)}>Detalhes</button>
 
                         </div>
